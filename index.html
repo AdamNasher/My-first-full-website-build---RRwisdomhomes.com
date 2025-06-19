@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RRwisdomhomes</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Mobile-specific styles are separated for clarity and maintainability -->
+  <link rel="stylesheet" href="style.mobile.css" />
+  <link rel="preload" href="style.css" as="style">
+  <link rel="preload" href="script.js" as="script">
+  <link rel="preload" href="video-1280_720_30fps.mp4" as="video" type="video/mp4">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon.png">
+</head>
+<body>
+  <!--
+    RRwisdomhomes Main Page
+    This HTML file structures the landing page, navigation, forms, and informational sections for RRwisdomhomes.
+    All content is designed for clarity, accessibility, and conversion.
+  -->
+  <header>
+    <!-- Site logo and slogan for brand identity -->
+    <img src="final-logo2.svg" alt="RRwisdomhomes Logo" class="logo-header" loading="lazy">
+    <p class="slogan-desktop">Your Trusted Home Buyers — No Repairs, No Fees, No Hassle</p>
+    <p class="slogan-mobile">Your Trusted Home Buyers<br>&mdash;<br>No Repairs, No Fees, No Hassle</p>
+    <!-- Desktop navigation links -->
+    <nav class="main-nav-desktop">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+    <!-- Hamburger menu for mobile navigation -->
+    <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div class="mobile-nav-menu">
+    <!-- Mobile navigation links -->
+    <nav class="main-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+  </div>
+
+  <section id="home" class="video-background">
+    <!-- Responsive video background for visual impact -->
+    <video autoplay muted loop playsinline>
+      <source src="video-mobile.mp4" type="video/mp4" media="(max-width: 767px)">
+      <source src="video-tablet.mp4" type="video/mp4" media="(min-width: 768px) and (max-width: 1024px)">
+      <source src="video-1280_720_30fps.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+    <div class="overlay-content">
+      <h2>Need to Sell Your House Fast?</h2>
+      <p>We buy homes as-is. No repairs.<br> We pay closing costs and realtor fees!</p>
+      <!-- Cash offer request form (Netlify-powered) -->
+      <form name="cash-offer" method="POST" data-netlify="true" netlify-honeypot="bot-field-cash" class="contact-form">
+        <input type="hidden" name="form-name" value="cash-offer">
+        <p hidden>
+          <label>Don't fill this out: <input name="bot-field-cash" /></label>
+        </p>
+        <h2>Request Your Cash Offer</h2>
+        <input type="text" name="name" placeholder="Your Name" required />
+        <div class="error-message"></div>
+        <input type="email" name="email" placeholder="Your Email" required />
+        <div class="error-message"></div>
+        <input type="text" name="property" placeholder="Property Address" required />
+        <div class="error-message"></div>
+        <textarea name="message" placeholder="Additional Details (optional)"></textarea>
+        <div class="error-message"></div>
+        <button type="submit" class="cta-button">Submit</button>
+        <div class="loading-indicator" style="display:none;">Submitting...</div>
+        <div class="status-message" style="display:none;"></div>
+      </form>
+    </div>
+  </section>
+
+  <section id="about" class="overlay-content wide-section" style="margin: 3rem auto; max-width: 900px; color: var(--primary); box-shadow: 0 4px 24px rgba(0,0,0,0.07);">
+    <!-- About section: company mission, values, and unique selling points -->
+    <h2>About RRwisdomhomes</h2>
+    <p>RRwisdomhomes is dedicated to helping homeowners sell their properties quickly and easily. With years of experience in the real estate industry, we provide fair, no-obligation cash offers and handle all the details so you don't have to.</p>
+    <h3>Our Mission</h3>
+    <p>To make selling your home simple, transparent, and stress-free.<br> We buy houses as-is, cover closing costs, and never charge hidden fees.</p>
+    <h3>Our Values</h3>
+    <ul style="text-align:left; max-width: 700px; margin: 1rem auto;">
+      <li><strong>Integrity:</strong> We operate with honesty and transparency.</li>
+      <li><strong>Respect:</strong> Every homeowner's situation is unique and important.</li>
+      <li><strong>Efficiency:</strong> We move quickly so you can too.</li>
+    </ul>
+    <div class="why-choose-us">
+      <h3>Why Choose Us?</h3>
+      <div class="why-row">
+        <div class="why-item">
+          <span class="why-icon">💸</span>
+          <p>Fair Cash Offers</p>
+        </div>
+        <div class="why-item">
+          <span class="why-icon">⏱️</span>
+          <p>Close Fast</p>
+        </div>
+        <div class="why-item">
+          <span class="why-icon">🏠</span>
+          <p>Any Condition</p>
+        </div>
+        <div class="why-item">
+          <span class="why-icon">🤝</span>
+          <p>No Fees or Commissions</p>
+        </div>
+      </div>
+    </div>
+    <!-- Cost comparison table: visually compares selling with us vs. a realtor -->
+    <div class="cost-comparison">
+      <h3 style="margin-top:2.5rem;">Cost Comparison</h3>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Working With Us</th>
+            <th>Using a Realtor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="comparison-row">
+            <td>Realtor Fees <span class="info-tooltip" aria-label="Realtor fees are commissions paid to the real estate agent, typically 5-6% of the sale price.">i</span></td>
+            <td>$0</td>
+            <td class="animated-number" data-target="24000">$0</td>
+          </tr>
+          <tr class="comparison-row">
+            <td>Required Repairs <span class="info-tooltip" aria-label="Estimated cost to fix issues before selling, such as roof, plumbing, or cosmetic repairs.">i</span></td>
+            <td>$0</td>
+            <td class="animated-number" data-target="8000">$0</td>
+          </tr>
+          <tr class="comparison-row">
+            <td>Transfer Tax <span class="info-tooltip" aria-label="A tax imposed by the city or county when property changes ownership.">i</span></td>
+            <td>$0</td>
+            <td class="animated-number" data-target="2000">$0</td>
+          </tr>
+          <tr class="comparison-row">
+            <td>Seller Concessions <span class="info-tooltip" aria-label="Credits or payments the seller gives to the buyer to cover closing costs or repairs.">i</span></td>
+            <td>$0</td>
+            <td class="animated-number" data-target="6000">$0</td>
+          </tr>
+          <tr class="comparison-row">
+            <td>Staging Cost <span class="info-tooltip" aria-label="Cost to furnish and decorate the home to attract buyers.">i</span></td>
+            <td>$0</td>
+            <td class="animated-number" data-target="2000">$0</td>
+          </tr>
+          <tr class="total-row comparison-row">
+            <td><strong>Total Closing Costs</strong></td>
+            <td><strong>$0</strong></td>
+            <td class="animated-number" data-target="42000"><strong>$0</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="contact" class="overlay-content wide-section" style="margin: 3rem auto; max-width: 700px; color: var(--primary); box-shadow: 0 4px 24px rgba(0,0,0,0.07);">
+    <!-- Contact section: form and company contact details -->
+    <h2>Contact Us</h2>
+    <!-- Contact form (Netlify-powered) -->
+    <form name="contact-us" method="POST" data-netlify="true" netlify-honeypot="bot-field-contact" class="contact-form" novalidate>
+      <input type="hidden" name="form-name" value="contact-us">
+      <p hidden>
+        <label>Don't fill this out: <input name="bot-field-contact" /></label>
+      </p>
+      <input type="text" name="name" placeholder="Your Name" required />
+      <div class="error-message"></div>
+      <input type="email" name="email" placeholder="Your Email" required />
+      <div class="error-message"></div>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <div class="error-message"></div>
+      <button type="submit" class="cta-button">Send Message</button>
+      <div class="loading-indicator" style="display:none;">Sending...</div>
+      <div class="status-message" style="display:none;"></div>
+    </form>
+    <div style="margin-top:2rem; text-align:left;">
+      <h3>Our Contact Info</h3>
+      <p><strong>Email:</strong> <a href="mailto:RRwisdomhomes@gmail.com">RRwisdomhomes@gmail.com</a></p>
+      <div style="margin-bottom: 0.5rem;">
+        <strong>Phone:</strong><br>
+        <span style="display:inline-block; margin-top:0.3rem;">
+          <span style="font-weight:500;">(510) 287-6430</span> <span style="color:#888;">(Keoni K.)</span><br>
+          <span style="font-weight:500;">(510) 754-8975</span> <span style="color:#888;">(Bryant R.)</span>
+        </span>
+      </div>
+      <p><strong>Location:</strong> Based in the San Francisco Bay Area, serving clients locally and in 20+ states nationwide.</p>
+    </div>
+    <!-- Did You Know: quick tip for sellers -->
+    <div class="did-you-know" style="margin-top:2.5rem; padding:1.5rem; background: #e6f7ff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+      <span style="font-size:1.5em;">🏡✨</span>
+      <strong style="margin-left:0.5em;">Did You Know?</strong>
+      <div style="margin-top:0.7em; color:#007799; font-size:1.08em;">
+        You can sell your house as-is and skip the repairs, showings, and stress!
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy" class="overlay-content wide-section" style="margin: 2rem auto 2rem auto; max-width: 900px; color: var(--primary); box-shadow: 0 4px 24px rgba(0,0,0,0.07); background: #fffbe6;">
+    <!-- Privacy policy for user trust and compliance -->
+    <h2>Privacy Policy</h2>
+    <p>Your privacy is important to us. We only use your information to respond to your inquiries and provide our services. We do not sell or share your information with third parties. For questions about your data, contact us at <a href="mailto:RRwisdomhomes@gmail.com">RRwisdomhomes@gmail.com</a>.</p>
+  </section>
+
+  <footer>
+    <!-- Footer: copyright and legal info -->
+    <p>&copy; 2025 RRwisdomhomes. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

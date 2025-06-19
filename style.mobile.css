@@ -1,0 +1,102 @@
+/*
+  RRwisdomhomes Mobile Stylesheet
+  This file contains all mobile-specific and small-screen CSS overrides for the RRwisdomhomes website.
+  Extracted from style.css for clarity and maintainability.
+*/
+
+/* --- Mobile: max-width 767px --- */
+@media (max-width: 767px) {
+  .mobile-nav-toggle {
+    display: block; /* Show hamburger icon on mobile */
+  }
+  .main-nav-desktop {
+    display: none; /* Hide desktop nav on mobile */
+  }
+}
+
+/* --- Mobile: max-width 900px --- */
+@media (max-width: 900px) {
+  .why-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .wide-section {
+    max-width: 99vw !important;
+  }
+}
+
+/* --- Mobile: max-width 700px (multiple blocks) --- */
+@media (max-width: 700px) {
+  .wide-section {
+    max-width: 99vw !important;
+  }
+
+  .overlay-content {
+    max-width: 350px;
+    width: 90%;
+    padding: 1.5rem 1.5rem;
+    box-sizing: border-box;
+    min-width: unset;
+  }
+  
+  .overlay-content h2 {
+    font-size: 1.3em;
+    text-align: center;
+  }
+  
+  .overlay-content p {
+    font-size: 0.9em;
+    word-wrap: break-word;
+    line-height: 1.4;
+  }
+  
+  .why-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .why-item {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+  
+  form {
+    width: 100%;
+    gap: 1.25rem;
+  }
+  
+  .form-group {
+    margin-bottom: 0;
+  }
+
+  input, textarea {
+    padding: 0.3em;
+    font-size: 0.7em;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 0;
+    min-width: 0;
+    text-align: center;
+  }
+
+  .cta-button, button {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    margin-top: 0;
+  }
+
+  /* Mobile specific slogan visibility */
+  .slogan-desktop {
+    display: none !important; /* Hide desktop slogan on mobile */
+  }
+
+  .slogan-mobile {
+    display: block !important; /* Show mobile slogan on mobile */
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.5rem 0.3rem; /* Reduce padding for smaller screens */
+    font-size: 0.85rem; /* Reduce font size for readability */
+  }
+} 

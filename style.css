@@ -1,0 +1,669 @@
+/*
+  RRwisdomhomes Main Stylesheet
+  This CSS file defines the visual identity, layout, and responsive behavior for the RRwisdomhomes website.
+  All styles are crafted for clarity, accessibility, and a modern look.
+  
+  Mobile-specific styles have been moved to style.mobile.css for clarity and maintainability.
+*/
+:root {
+  /* Color palette for consistent branding */
+  --primary: #656565; /* black */
+  --secondary: #f7f7f7; /* light grey */
+  --accent: #d2b48c; /* tan */
+  --text: #222;
+  --white: #fff;
+  --gray: #bdbdbd;
+}
+
+body {
+  /* Base typography and background pattern for subtle texture */
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--secondary);
+  /* Subtle geometric pattern background for the whole page */
+  background-image: url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="40" height="40" fill="%23f7f7f7"/><circle cx="20" cy="20" r="1.5" fill="%23d2b48c"/><circle cx="0" cy="0" r="1.5" fill="%23d2b48c"/><circle cx="40" cy="0" r="1.5" fill="%23d2b48c"/><circle cx="0" cy="40" r="1.5" fill="%23d2b48c"/><circle cx="40" cy="40" r="1.5" fill="%23d2b48c"/></svg>');
+  background-repeat: repeat;
+  background-size: 45px 45px;
+}
+
+header {
+  /* Header with background pattern and central logo/slogan */
+  background-color: var(--primary);
+  color: var(--white);
+  text-align: center;
+  padding: 2rem 1rem;
+  background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="1" fill="%23ffffff" opacity="0.1"/></svg>');
+  background-repeat: repeat;
+  background-size: 20px 20px;
+  position: relative; /* Needed for positioning the toggle button */
+}
+
+/* Mobile navigation toggle (hamburger icon) */
+.mobile-nav-toggle {
+  /* Hamburger icon for mobile navigation */
+  display: none; /* Hidden by default on desktop */
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 30px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100; /* Ensure it's above other content */
+}
+
+.mobile-nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 5px; /* Space between lines */
+}
+
+.mobile-nav-toggle span:last-child {
+  margin-bottom: 0;
+}
+
+/* Animation for closing the hamburger icon */
+.mobile-nav-toggle.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.mobile-nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.mobile-nav-toggle.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile navigation menu container */
+.mobile-nav-menu {
+  /* Fullscreen overlay for mobile navigation */
+  position: fixed;
+  top: 0;
+  left: -100%; /* Initially off-screen */
+  width: 100%;
+  height: 100%;
+  background: var(--primary);
+  z-index: 1000;
+  transition: left 0.3s ease-in-out;
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.mobile-nav-menu.active {
+  display: flex; /* Show when active */
+  left: 0; /* Slide in */
+}
+
+.mobile-nav-menu .main-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-nav-menu .main-nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  display: block;
+}
+
+/* Desktop navigation (main-nav-desktop) */
+.main-nav-desktop {
+  /* Desktop navigation bar */
+  display: none; /* Hidden by default on mobile */
+  justify-content: center;
+  gap: 2rem;
+  background: var(--primary);
+  padding: 1rem 0;
+}
+
+.main-nav-desktop a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.main-nav-desktop a:hover {
+  color: var(--accent);
+}
+
+/* Media queries for responsive navigation */
+@media (min-width: 768px) {
+  .mobile-nav-toggle {
+    display: none; /* Hide hamburger icon on desktop */
+  }
+  .mobile-nav-menu {
+    display: none; /* Hide mobile menu on desktop */
+  }
+  .main-nav-desktop {
+    display: flex; /* Show desktop nav on desktop */
+  }
+}
+
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: var(--accent);
+}
+
+.video-background {
+  /* Section with video hero background */
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.video-background video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 1;
+  filter: brightness(0.45);
+  transition: filter 0.4s;
+}
+
+/* Vignette effect for video background */
+.video-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.35) 100%);
+}
+
+.overlay-content {
+  /* Card-like overlay for content on video and sections */
+  position: relative;
+  z-index: 2;
+  background: rgba(255,255,255,0.96);
+  color: var(--primary);
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.overlay-content h2 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+.overlay-content p {
+  margin-bottom: 2rem;
+}
+
+.cta-button, button {
+  /* Call-to-action and button styling */
+  background-color: var(--accent);
+  color: var(--primary);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+.cta-button:hover, button:hover {
+  background: var(--primary);
+  color: var(--accent);
+}
+
+form {
+  /* Form layout for contact and offer forms */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+input, textarea {
+  /* Input and textarea base styles */
+  padding: 0.75rem;
+  border: 1px solid var(--gray);
+  border-radius: 5px;
+  font-size: 1rem;
+  background: var(--white);
+  color: var(--text);
+}
+
+/* Form validation styles */
+input:focus, textarea:focus {
+  /* Highlight input on focus for accessibility */
+  outline: none;
+  border-color: var(--accent); /* Highlight on focus */
+}
+
+input.invalid, textarea.invalid {
+  /* Red border for invalid input */
+  border-color: #e74c3c;
+}
+
+input.valid, textarea.valid {
+  /* Green border for valid input */
+  border-color: #27ae60;
+}
+
+.error-message {
+  /* Error message styling for form validation */
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: -0.75rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  display: none; /* Hidden by default */
+}
+
+.error-message.visible {
+  display: block; /* Shown when there's an error */
+}
+
+/* Form submission feedback styles */
+.loading-indicator {
+  /* Loading indicator for async form submission */
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+  display: none; /* Hidden by default */
+}
+
+.status-message {
+  /* Status message for form submission feedback */
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  display: none; /* Hidden by default */
+}
+
+.status-message.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+footer {
+  /* Footer styling for copyright and legal info */
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--primary);
+  color: var(--white);
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  .overlay-content {
+    max-width: 500px;
+    padding: 3rem 3rem;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove all animation-related section styles */
+section {
+  /* Section fade-in animation for scroll effect */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+section:first-of-type {
+  opacity: 1;
+  transform: none;
+}
+
+section.visible {
+  /* Section becomes visible when in viewport */
+  opacity: 1;
+  transform: none;
+}
+
+.wide-section {
+  /* Wider content area for about/contact sections */
+  max-width: 900px !important;
+  width: 95%;
+  position: relative;
+  background-color: var(--secondary) !important;
+}
+
+.why-choose-us {
+  /* Highlighted box for unique selling points */
+  margin-top: 2.5rem;
+  background: #f3ede5;
+  border-radius: 12px;
+  padding: 2rem 1rem 1.5rem 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.why-choose-us h3 {
+  margin-bottom: 1.2rem;
+  color: var(--primary);
+}
+.why-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1.5rem;
+}
+.why-item {
+  flex: 1 1 150px;
+  min-width: 120px;
+  max-width: 180px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.2rem 0.5rem 0.8rem 0.5rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.why-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.testimonial {
+  font-size: 1.1rem;
+  text-align: left;
+  border-left: 4px solid #b48a00;
+}
+
+.cost-comparison {
+  /* Cost comparison table container */
+  margin-top: 2.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 2rem 1rem 1.5rem 1rem;
+  overflow-x: auto;
+}
+.comparison-table {
+  /* Table for comparing costs between selling options */
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 1rem;
+  background: transparent;
+}
+.comparison-table th, .comparison-table td {
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+.comparison-table th {
+  background: var(--secondary);
+  color: var(--primary);
+  font-weight: 600;
+}
+.comparison-table td {
+  background: #fff;
+}
+.comparison-table .total-row td {
+  background: var(--accent);
+  color: var(--primary);
+  font-weight: 700;
+  border-bottom: none;
+}
+
+.info-tooltip {
+  /* Tooltip for extra info in tables */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.8em;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 0.25em;
+  position: relative;
+  transition: background 0.2s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+}
+.info-tooltip:hover,
+.info-tooltip:focus {
+  background: var(--accent);
+  color: var(--primary);
+}
+.info-tooltip::after {
+  content: attr(aria-label);
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 120%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 0.6em 1em;
+  border-radius: 6px;
+  white-space: pre-line;
+  font-size: 0.95em;
+  min-width: 180px;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.info-tooltip:hover::after,
+.info-tooltip:focus::after {
+  display: block;
+}
+
+.comparison-table th:nth-child(3),
+.comparison-table td:nth-child(3) {
+  background: #222;
+  color: #fff;
+}
+.comparison-table .total-row td {
+  background: #b48a00;
+  color: #fff;
+  font-weight: 700;
+  border-bottom: none;
+}
+.comparison-table th,
+.comparison-table td {
+  border-bottom: 1.5px solid #bbb;
+}
+
+.comparison-row {
+  /* Row animation for cost comparison */
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.comparison-row.visible {
+  /* Row becomes visible when animated */
+  opacity: 1;
+}
+
+.thanks-animation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  animation: fadeIn 0.7s;
+}
+.checkmark-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #d2b48c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.checkmark {
+  width: 32px;
+  height: 32px;
+  border-radius: 2px;
+  border-left: 5px solid #fff;
+  border-bottom: 5px solid #fff;
+  transform: rotate(-45deg) scale(0.7);
+  position: absolute;
+  left: 18px;
+  top: 10px;
+  opacity: 0;
+  animation: checkmarkDraw 0.5s 0.2s forwards;
+}
+@keyframes checkmarkDraw {
+  to {
+    opacity: 1;
+    transform: rotate(-45deg) scale(1);
+  }
+}
+.thanks-text {
+  font-size: 1.2em;
+  color: #b48a00;
+  text-align: center;
+  margin-top: 0.5em;
+  font-weight: 600;
+}
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.7s;
+}
+.contact-thanks {
+  text-align: center;
+  font-size: 1.3em;
+  color: #007799;
+  margin: 2.5rem 0 1.5rem 0;
+  animation: fadeIn 0.7s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: none; }
+}
+
+.logo-header {
+  max-width: 1000px; /* Adjust as needed */
+  height: auto;
+  margin-bottom: 1rem; /* Space between logo and slogan */
+}
+
+/* Slogan Styling */
+.slogan-desktop {
+  text-align: center;
+  margin-bottom: 1rem;
+  display: none; /* Hidden by default for mobile-first approach */
+}
+
+.slogan-mobile {
+  text-align: center;
+  margin-bottom: 1rem;
+  display: block; /* Visible by default for mobile-first approach */
+}
+
+/* Clean up old slogan styles to avoid conflicts */
+.header-slogan,
+.header-slogan-desktop,
+.header-slogan-mobile-part-1,
+.header-slogan-mobile-hyphen,
+.header-slogan-mobile-part-2,
+.mobile-only-break {
+  display: none !important; /* Force hide any old slogan elements */
+}
+
+/* Adjust text in sections like 'About RRwisdomhomes' and 'Our Mission' */
+.wide-section p {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+/* Adjust text in 'Why Choose Us?' items */
+.why-item p {
+  font-size: 0.95em;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .slogan-desktop {
+    display: block !important; /* Show desktop slogan on larger screens */
+  }
+  .slogan-mobile {
+    display: none !important; /* Hide mobile slogan on larger screens */
+  }
+}
+
+/* Service Area Map Styles */
+.usa-map-container {
+  /* Container for SVG map of service areas */
+  width: 100%;
+  max-width: 800px; /* Adjust max width as needed */
+  margin: 2rem auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.usa-map-container svg {
+  width: 100%;
+  height: auto;
+}
+
+.state {
+  /* Default state fill for non-service areas */
+  fill: #e0e0e0;
+  stroke: #bdbdbd;
+  stroke-width: 1;
+  stroke-linejoin: round;
+  transition: fill 0.3s ease;
+}
+
+.state:hover {
+  /* Highlight state on hover */
+  fill: var(--accent);
+  cursor: pointer;
+}
+
+/* Highlighted Service States */
+#california, #texas, #arizona, #nevada, #ohio, #oklahoma, #florida, 
+#north-carolina, #south-carolina, #georgia, #indiana, #missouri, 
+#tennessee, #virginia, #illinois, #michigan, #colorado {
+  /* Highlighted states for service area */
+  fill: var(--accent);
+}
